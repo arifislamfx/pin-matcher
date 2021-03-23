@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pin Generator</title>
+
+    <!-- Bootstrap CSS Link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Font Awesome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <!-- Custom CSS Link -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,32 +25,34 @@
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <input id ="box" class="form-control" type="text">
+                    <input id ="user__display" class="form-control" type="text">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
-                              <div class="button">7</div>
-                              <div class="button">8</div>
-                              <div class="button">9</div>
+                              <div onclick="display('7')" class="button">7</div>
+                              <div onclick="display('8')" class="button">8</div>
+                              <div onclick="display('9')" class="button">9</div>
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">4</div>
-                              <div class="button">5</div>
-                              <div class="button">6</div>
+                              <div onclick="display('4')" class="button">4</div>
+                              <div onclick="display('5')" class="button">5</div>
+                              <div onclick="display('6')" class="button">6</div>
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">1</div>
-                              <div class="button">2</div>
-                              <div class="button">3</div>
+                              <div onclick="display('1')" class="button">1</div>
+                              <div onclick="display('2')" class="button">2</div>
+                              <div onclick="display('3')" class="button">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div id="ce" class="button">CE</div>
-                                <div class="button">0</div>
-                                <div id="c" class="button">C</div>
+                                <div onclick="display('BS')" class="button">
+                                    <i class="fas fa-backspace"></i>
+                                </div>
+                                <div onclick="display('0')" class="button">0</div>
+                                <div onclick="display('C')" class="button">C</div>
                             </div>
                             <div>
                                 <button id="submitBtn" type="submit" class="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <p id="action__left"> <span id="action__left__num">3</span> try left</p>
                             </div>
                     </div>
                 </div>
@@ -58,7 +67,13 @@
         <p id="match" class="notify">✅ Pin Matched... Secret door is opening for you</p>
     </div>
 
+
     <!-- Custom Js -->
     <script src="main.js"></script>
+
+    <!-- Using sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   
+
 </body>
 </html>

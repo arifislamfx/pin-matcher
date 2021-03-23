@@ -6,33 +6,34 @@ function generate__btn () {
     document.getElementById('generate__input').value = random__Num;
 }
 
-// get screen number
-let screen = document.getElementById('box');
-let buttons = document.getElementsByClassName('button');
- let screenValue = '';
- for (item of buttons) {
-   item.addEventListener('click', (e) => {
-     buttonText = e.target.innerText;
-     screen.value += buttonText;
-     console.log('button text is', buttonText);
-    if (buttonText == 'C') {
-            screen.value = '';
-     }
-     else if (buttonText == 'CE') {
-       screen.value = ''; 
-     }
-   })
+// Button Section
+function display(user__input) {
+  if (user__input === 'C') {
+    document.getElementById('user__display').value = '';
+    swal ("..Empty..")
+  }
+  else if (user__input == "BS") {
+
+    let display__value = document.getElementById('user__display');
+    if( document.getElementById('user__display').value == "")
+    swal ("Input field is empty!")
+    
+  }
+ else if(user__input == 'BS') {
+    document.getElementById('user__display').value = display__value.value.substring(0,display__value.value.length-1);
  }
+ else {
+   document.getElementById('user__display').value += user__input;
+ }
+}
 
-//  Submit Button
-const btn = document.getElementById('submitBtn');
-btn.addEventListener('click', function(e) {
- const mainPage = document.getElementById('mainPage');
- mainPage.style.display = "none";
- const notify = document.getElementById("notify__sec");
- notify.style.display = "block";
- 
-});
+// Notify Section
+function notify(id, value) {
+  document.getElementById(id).style.display = value;
+}
 
-
+// clear input num/data
+function clear__input(id) {
+  document.getElementById(id).value = "";
+}
 
