@@ -12,20 +12,72 @@ function display(user__input) {
     document.getElementById('user__display').value = '';
     swal ("..Empty..")
   }
-  else if (user__input == "BS") {
-
-    let display__value = document.getElementById('user__display');
-    if( document.getElementById('user__display').value == "")
-    swal ("Input field is empty!")
-    
-  }
- else if(user__input == 'BS') {
-    document.getElementById('user__display').value = display__value.value.substring(0,display__value.value.length-1);
- }
  else {
    document.getElementById('user__display').value += user__input;
  }
 }
+
+// Backspace 
+function backspace() {
+  let input__value=document.getElementById("user__display").value;
+ document.getElementById("user__display").value=input__value.substring(0,input__value.length-1);
+if (input__value == ''){
+  document.getElementById('user__display').value = "";
+  swal("..nothing is left..")
+}
+}
+
+// Submit Section 
+function submit() {
+  let display__number = document.getElementById('user__display').value;
+  let random__number = document.getElementById('generate__input').value;
+
+  if((display__number == '') || (random__number == '')) {
+    swal ("Empty!", "please check random number input field")
+  } 
+  else if(display__number == random__number) {
+    notify('match', 'block');
+    notify('notMatch', 'none');
+    clear__input('user__display');
+    clear__input('generate__input');
+  }
+  else {
+    notify('match', 'none');
+    notify('notMatch', 'block');
+    action__left();
+  }
+}
+
+// Action Button
+function action__left() {
+  let update__num = 0;
+let action__left = document.getElementById("action__left__num").innerText;
+let convert__num = parseInt(action__left);
+ update__num = convert__num - 1;
+ document.getElementById("action__left").style.display = "block";
+
+ if (convert__num > 1) {
+   document.getElementById("action__left__num").innerText = update__num;
+    clear__input('user__display');
+ }
+ else {
+   swal ("Opps!", "you have already try 3 times");
+   document.getElementById("action__left").style.display = 'none';
+   notify('match', 'none');
+    notify('notMatch', 'none');
+    
+    // disabled submit button:
+    document.getElementById("submit").disabled = true;
+    document.getElementById("submit").style.background = '#ccc';
+    document.getElementById("submit").style.color = '#666';
+
+    clear__input('user__display');
+    clear__input('generate__input');
+    
+ }
+
+}
+
 
 // Notify Section
 function notify(id, value) {
